@@ -4,6 +4,7 @@ Partially Monotone SVM
 This repository provides all MATLAB code necessary to use build Partially Monotone SVM models for binary classification problems. The framework is described in Bartey, Liu and Reynolds 'Effective Knowledge Integration in SVM for Improved Accuracy' 2016 (submitted to ECML PKDD). Please see the paper for further details.
 
 A typical process to build a partially monotone knowledge integrated model is:
+
 1. Use grid search to find optimal box constraint and RBF kernel factor values for the UNCONSTRAINED SVM (use train_consvm_rbf() with MCs=[], or MATLAB's fitcsvm for RBF kernel (which uses SMO instead of quadprog and is faster)).
 
 2. Solve the optimal unconstrained SVM model using train_consvm_rbf() and the optimal hyperparameters, to obtain the alphas and bias values needed to finalise the model.
