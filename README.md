@@ -20,3 +20,8 @@ A typical process to build a partially monotone knowledge integrated model is:
 7. Solve the CONSTRAINED SVM using train_consvm_rbf(). 
 
 8. You can then assess the resulting model with predict_consvm_rbf() for predications, and calc_mcc_pmsvm_rbf() to measure final monotonicity levels for each constrained feature (MCC).
+
+
+DEPENDENCIES:
+In the interests of a 'batteries included' approach, I have included all dependencies in this repository (boxcox.m, outlier_limits.m and iif.m). Nothing else should be required (let me know if that is not the case!)
+
