@@ -5,7 +5,7 @@ This repository provides all MATLAB code necessary to use build Partially Monoto
 
 A typical process to build a partially monotone knowledge integrated model is:
 
-1. Use grid search to find optimal box constraint and RBF kernel factor values for the UNCONSTRAINED SVM (use train_consvm_rbf() with MCs=[], or MATLAB's fitcsvm for RBF kernel (which uses SMO instead of quadprog and is faster)).
+1. Use grid search with k-fold cross-validation to find the optimal hyperparameters (box constraint and RBF kernel factor) for the UNCONSTRAINED SVM (use train_consvm_rbf() with MCs=[], or MATLAB's fitcsvm for RBF kernel (which uses SMO instead of quadprog and is faster)).
 
 2. Solve the optimal unconstrained SVM model using train_consvm_rbf() and the optimal hyperparameters, to obtain the alphas and bias values needed to finalise the model.
 
