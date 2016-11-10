@@ -1,7 +1,8 @@
 # PMSVM
 Partially Monotone SVM
 
-This repository provides all MATLAB code necessary to use build Partially Monotone SVM models for binary classification problems. The framework is described in Bartey, Liu and Reynolds 'Effective Knowledge Integration in SVM for Improved Accuracy' 2016 (submitted to ECML PKDD). Please see the paper for further details.
+This repository provides all MATLAB and PYTHON code necessary to use build Partially Monotone SVM models for binary classification problems. The framework is described in Bartey, Liu and Reynolds 'Eective Monotone Knowledge Integration in
+Kernel Support Vector Machines' 2016 (accepted by ADMA 2016). Please see the paper for further details.
 
 A typical process to build a partially monotone knowledge integrated model is:
 
@@ -11,7 +12,7 @@ A typical process to build a partially monotone knowledge integrated model is:
 
 3. Decide which features are suggested monotone in the response, based on domain knowledge.
 
-4. Check that these features are sensible using calc_mcc_interp_pmsvm_rbf() to calculate the proportion of data points for which these features are monotone increasing, monotone decreasing, monotone increasing AND decreasing, or no change. Use Equation 10 to calculate the disagreement metric (dis=(Ndec+0.5Nincdec)/(Ninc+Ndec+Nincdec)), and if dis>90% do NOT constraint that feature.
+4. Check that these features are sensible using calc_mcc_interp_pmsvm_rbf() (matlab) or call_mcc_interp() (python - note this is in the separate PM repository) to calculate the proportion of data points for which these features are monotone increasing, monotone decreasing, monotone increasing AND decreasing, or no change. Use Equation 10 to calculate the disagreement metric (dis=(Ndec+0.5Nincdec)/(Ninc+Ndec+Nincdec)), and if dis>90% do NOT constraint that feature.
 
 5. Check unconstrained SVM model monotonicity in suggested features using calc_mcc_pmsvm_rbf() to measure monotonicity levels for each feature (MCC). If they are already almost 100%, adding constraints will not change the model much.
 
@@ -19,9 +20,10 @@ A typical process to build a partially monotone knowledge integrated model is:
 
 7. Solve the CONSTRAINED SVM using train_consvm_rbf(). 
 
-8. You can then assess the resulting model with predict_consvm_rbf() for predications, and calc_mcc_pmsvm_rbf() to measure final monotonicity levels for each constrained feature (MCC).
+8. You can then assess the resulting model with predict_consvm_rbf() for predications, and calc_mcc_pmsvm_rbf() (matlab) or calc_mcc_interp() (python - from separate PM repository) to measure final monotonicity levels for each constrained feature (MCC).
 
 
 DEPENDENCIES:
-In the interests of a 'batteries included' approach, I have included all dependencies in this repository (boxcox.m, outlier_limits.m and iif.m). Nothing else should be required (let me know if that is not the case!)
+MATLAB: In the interests of a 'batteries included' approach, I have included all dependencies in this repository (boxcox.m, outlier_limits.m and iif.m). Nothing else should be required (let me know if that is not the case!)
+PYTHON: The constraint generation (call_mcc_interp()) and montonicity measurement code (calc_mcc_interp) is in the separate 'PM' repository as it is generic to other kinds ofniodels.
 
